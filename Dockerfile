@@ -18,4 +18,5 @@ RUN curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-c
 
 RUN apt-get update \
     && apt-get install -y libmagickwand-dev --no-install-recommends \
-    && yes '' | pecl install -f imagick
+    && yes '' | pecl install -f imagick \
+    && echo extension=imagick.so > /usr/local/etc/php/php.ini
