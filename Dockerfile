@@ -16,7 +16,14 @@ RUN curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-c
     && chmod +x /usr/local/bin/docker-compose \
     && ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 
+# Install Imagick
 RUN apt-get update \
     && apt-get install -y libmagickwand-dev --no-install-recommends \
     && yes '' | pecl install -f imagick \
     && echo extension=imagick.so > /usr/local/etc/php/php.ini
+
+# Install Postgre PDO
+RUN apt-get install -y libpq-dev \
+    && docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql \
+    && docker-php-ext-install pdo pdo_pgsql pgsql \
+    && echo extension=pdo_pgsql.so > /usr/local/etc/php/php.ini
