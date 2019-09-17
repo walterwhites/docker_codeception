@@ -21,3 +21,4 @@ RUN apt-get update \
     && apt-get install -y libmagickwand-dev --no-install-recommends \
     && yes '' | pecl install -f imagick \
     && echo -e "\nextension=imagick.so" >> /usr/local/etc/php/php.ini
+    && echo -e "\nextension=pdo_pgsql.so" >> /usr/local/etc/php/php.ini
