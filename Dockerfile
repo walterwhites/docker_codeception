@@ -21,9 +21,3 @@ RUN apt-get update \
     && apt-get install -y libmagickwand-dev --no-install-recommends \
     && yes '' | pecl install -f imagick \
     && echo -e "\nextension=imagick.so" >> /usr/local/etc/php/php.ini
-
-# Install Postgre PDO
-RUN apt-get install -y libpq-dev \
-    && docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql \
-    && docker-php-ext-install pdo pdo_pgsql pgsql \
-    && echo -e "\nextension=pdo_pgsql.so" >> /usr/local/etc/php/php.ini
