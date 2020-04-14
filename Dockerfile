@@ -1,4 +1,4 @@
-FROM codeception/codeception
+FROM walterwhites/codeception_src
 
 MAINTAINER Flo Flo contact.magician@gmail.com
 
